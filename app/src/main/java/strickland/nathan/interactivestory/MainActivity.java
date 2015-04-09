@@ -1,5 +1,6 @@
 package strickland.nathan.interactivestory;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,10 +29,24 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 String name = mNameField.getText().toString();
-                Toast.makeText(MainActivity.this, name, Toast.LENGTH_LONG).show();
+                startStory(name);
             }
         });
-
     }
+
+    private void startStory(String name){
+        //Intent Android Object
+        Intent intent = new Intent(this,StoryActivity.class);
+        //Adding Extras you need keys as well the parameter name.
+        intent.putExtra(getString(R.string.key_name), name);
+        //Express/start Intent
+        startActivity(intent);
+    }
+
+
+
+
+
+
 
 }
